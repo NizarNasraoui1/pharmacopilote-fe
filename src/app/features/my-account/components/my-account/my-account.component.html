@@ -1,0 +1,81 @@
+<div class="grid">
+    <div *ngIf="adminInformations" class="col-12 md:col-12">
+        <div class="card p-fluid">
+            <h5>Mes informations</h5>
+            <div>
+                <form [formGroup]="adminInformationsForm">
+                    <div class="p-formgrid grid">
+                        <div class="field col">
+                            <label htmlFor="firstName">Nom</label>
+                            <input formControlName="firstName" pInputText id="firstName" type="text" />
+                            <p class="my-account-error-msg" *ngIf="adminInformationsForm.get('firstName').errors && adminInformationsForm.get('firstName').touched">
+                                * ce champs est obligatoire
+                            </p>
+                        </div>
+                        <div class="field col">
+                            <label htmlFor="lastName">Prénom</label>
+                            <input formControlName="lastName" pInputText id="lastName" type="text" />
+                            <p class="my-account-error-msg" *ngIf="adminInformationsForm.get('lastName').errors && adminInformationsForm.get('lastName').touched">
+                                * ce champs est obligatoire
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-formgrid grid">
+                        <div class="field col">
+                            <label htmlFor="tel">Tel</label>
+                            <input formControlName="tel" pInputText id="tel" type="text" />
+                            <p class="my-account-error-msg" *ngIf="adminInformationsForm.get('tel').errors && adminInformationsForm.get('tel').touched">
+                                * ce champs est obligatoire
+                            </p>
+                        </div>
+                        <div class="field col">
+                            <label htmlFor="email">Email</label>
+                            <input formControlName="email" pInputText id="email" type="email" />
+                            <p class="my-account-error-msg" *ngIf="adminInformationsForm.get('email').errors && adminInformationsForm.get('email').touched">
+                                format erroné
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="save-button">
+                <p-button (click)="updateAdminInformations()" label="Enregistrer" type="submit"></p-button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 md:col-12">
+        <div class="card p-fluid">
+            <h5>Changement de mot de passe</h5>
+            <div>
+                <form [formGroup]="changePasswordForm">
+                    <div class="grid">
+                        <div class="field col">
+                            <label htmlFor="oldPassword"
+                                >Mot de passe actuel</label
+                            >
+                            <input formControlName="oldPassword" pInputText id="oldPassword" type="text" />
+                        </div>
+                        <div class="field col">
+                            <label htmlFor="newPasswordConfirmation"
+                                >Nouveau mot de passe</label
+                            >
+                            <input formControlName="newPasswordConfirmation" pInputText id="newPasswordConfirmation" type="text" />
+                        </div>
+                        <div class="field col">
+                            <label htmlFor="newPassword"
+                                >Confirmation du mot de passe</label
+                            >
+                            <input formControlName="newPassword" pInputText id="newPassword" type="text" />
+                        </div>
+                    </div>
+                    <p *ngIf="passwordsNotEquals" class="my-account-error-msg">Les mots de passes ne sont pas identiques</p>
+                    <p *ngIf="wrongPassword" class="my-account-error-msg">Le mot de passe est erroné</p>
+                </form>
+            </div>
+            <div class="save-button">
+                <p-button (click)="changePassword()" label="Enregistrer" type="submit"></p-button>
+            </div>
+        </div>
+    </div>
+</div>

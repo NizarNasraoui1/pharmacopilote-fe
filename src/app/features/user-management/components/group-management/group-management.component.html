@@ -1,0 +1,29 @@
+<div class="card">
+    <p-table [value]="groups" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Groupe</th>
+                <th>Date de création</th>
+                <th>Modifier</th>
+                <th>Effacer</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-group>
+            <tr>
+                <td>{{ group.name }}</td>
+                <td>{{group.createdDate | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <button *ngIf="group.name!='ADMIN'" (click)="modifyGroup(group)" [ngStyle]="{'margin-bottom':'2%'}" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success p-button-outlined"></button>
+                </td>
+                <td>
+                    <button *ngIf="group.name!='ADMIN'" (click)="deleteGroup(group)" [ngStyle]="{'margin-bottom':'2%'}" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-outlined"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<div class="add-group">
+    <p-button (click)="addNewGroup()" label="Ajouter un groupe"/>
+</div>
+<app-add-group #addUpdateGroupComponent (closedModal)="onModalClosed()" [visible]="isCreateGroupModalVisible" (modifyGroup)="updateGroup($event)" (saveGroup)="saveGroup($event)" [visible]="isCreateGroupModalVisible"></app-add-group>
