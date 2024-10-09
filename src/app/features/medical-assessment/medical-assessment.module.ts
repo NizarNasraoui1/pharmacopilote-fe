@@ -11,6 +11,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ButtonModule } from 'primeng/button';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { ButtonModule } from 'primeng/button';
     DropdownModule,
     FieldsetModule,
     ProgressSpinnerModule,
-    ButtonModule
+    ButtonModule,
+    ReactiveFormsModule
+
   ]
 })
 export class MedicalAssessmentModule { }

@@ -1,57 +1,59 @@
-<div class="create-medical-assessment">
-    <div class="card title">
-        <h4>New Medical Assessment</h4>
-    </div>
+<form [formGroup]="medicalAssessmentForm">
+    <div class="create-medical-assessment">
+        <div class="card title">
+            <h4>New Medical Assessment</h4>
+        </div>
 
-    <div class="card">
-        <p>ID :</p>
-        <input type="text" pInputText />
-    </div>
+        <div class="card">
+            <p>ID :</p>
+            <input type="text" formControlName="businessId" pInputText />
+        </div>
 
-    <div class="card">
-        <p>Client Model :</p>
-        <p-dropdown [options]="cities" optionLabel="name" placeholder="Select a Model" />
-    </div>
+        <div class="card">
+            <p>Client Model :</p>
+            <p-dropdown [options]="models" optionLabel="name" placeholder="Select a Model" formControlName="model" />
+        </div>
 
-    <div class="card">
-        <p>VERBATIM:</p>
-        <textarea rows="10" cols="90" pInputTextarea>
-    </textarea>
-    </div>
+        <div class="card">
+            <p>VERBATIM:</p>
+            <textarea rows="10" cols="90" formControlName="verbatim" pInputTextarea>
+        </textarea>
+        </div>
 
-    <div class="card">
-        <p>Case export file:</p>
-        <pharmacopilote-file-upload></pharmacopilote-file-upload>
-    </div>
+        <div class="card">
+            <p>Case export file:</p>
+            <pharmacopilote-file-upload formControlName="caseExportFile"></pharmacopilote-file-upload>
+        </div>
 
-    <div class="card">
-        <p>RCP URL:</p>
-        <input type="text" pInputText />
-    </div>
+        <div class="card">
+            <p>RCP URL:</p>
+            <input type="text" formControlName="rcpUrl" pInputText />
+        </div>
 
-    <div *ngIf="!showReportClicked" class="flex justify-content-end submit-button">
-        <p-button (click)="submit()" label="Submit" />
-    </div>
+        <div *ngIf="!showReportClicked" class="flex justify-content-end submit-button">
+            <p-button (click)="submit()" label="Submit" />
+        </div>
 
-    <div *ngIf="showReportClicked" class="card">
-        <p>Report :</p>
-        <p-fieldset>
-            <div *ngIf="!displayReport; else showReport" class="spinner">
-                <p-progressSpinner ariaLabel="loading" />
-            </div>
-            <ng-template #showReport>
-                <div>
-                    <p class="m-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.
-                    </p>
+        <div *ngIf="showReportClicked" class="card">
+            <p>Report :</p>
+            <p-fieldset>
+                <div *ngIf="!displayReport; else showReport" class="spinner">
+                    <p-progressSpinner ariaLabel="loading" />
                 </div>
-            </ng-template>
-        </p-fieldset>
-    </div>
+                <ng-template #showReport>
+                    <div>
+                        <p class="m-0">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                            deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+                </ng-template>
+            </p-fieldset>
+        </div>
 
-</div>
+    </div>
+</form>

@@ -1,29 +1,34 @@
-<div class="flex justify-content-end">
+<div class="add-model flex justify-content-end">
     <p-button (onClick)="addModel()" label="Add Model" />
-    <p-dialog header="Edit Profile" [modal]="true" [(visible)]="visible" [style]="{ width: '48rem' }">
-        <!-- <span class="p-text-secondary block mb-5">Update your information.</span> -->
+</div>
+
+<p-dialog header="Add Model" [modal]="true" [(visible)]="visible" [style]="{ width: '48rem' }">
+    <form [formGroup] ="addModelForm">
+        <div class="align-items-center gap-3 mb-3">
+            <P>NAME :</P>
+            <input formControlName="name" type="text" placeholder="Nom" pInputText class="w-full mb-3" style="padding: 1rem" />
+        </div>
         <div class="align-items-center gap-3 mb-3">
             <P>VERBATIM :</P>
-            <!-- <input pInputText id="username" class="flex-auto" autocomplete="off" /> -->
-            <textarea id="username" rows="10" cols="90" pInputTextarea></textarea>
+            <textarea formControlName="verbatim" id="verbatim" rows="10" cols="90" pInputTextarea></textarea>
         </div>
         <div class="align-items-center gap-3 mb-5">
             <P>REPORT :</P>
-            <textarea id="username" rows="10" cols="90" pInputTextarea></textarea>
+            <textarea formControlName="report" id="report" rows="10" cols="90" pInputTextarea></textarea>
         </div>
+        <p *ngIf="!addModelForm.valid && addModelForm.touched" class="create-model-warn-msg">Veuillez remplir tous les champs !</p>
         <div class="flex justify-content-end gap-2">
-            <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
-            <p-button label="Save" (onClick)="visible = false" />
+            <p-button label="Cancel" severity="secondary" (onClick)="cancel()" />
+            <p-button label="Save" (onClick)="saveModel()" />
         </div>
-    </p-dialog>
-</div>
+    </form>
+</p-dialog>
 
-<div class="card">
+<div *ngIf="models" class="card">
     <p-table [value]="models" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
                 <th>Nom</th>
-                <th>Crée par</th>
                 <th>Afficher</th>
                 <th>Supprimer</th>
             </tr>
@@ -31,9 +36,8 @@
         <ng-template pTemplate="body" let-model>
             <tr>
                 <td>{{model.name}}</td>
-                <td>{{model.createdBy}}</td>
                 <td>
-                    <button [ngStyle]="{'margin-right':'3%','margin-bottom':'2%'}" pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success p-button-outlined"></button>
+                    <button [ngStyle]="{'margin-right':'3%','margin-bottom':'2%'}" (click)="showModel(model)" pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success p-button-outlined"></button>
                 </td>
                 <td>
                     <button [ngStyle]="{'margin-bottom':'2%'}" pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined"></button>
