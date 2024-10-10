@@ -3,24 +3,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpUtilService } from 'src/app/util/service/http-util.service';
 
-const MEDICAL_ASSESSMENT_REPORT_API_URL = '/api/pharmacopilote/medical-assessments-report';
+const QUALITY_CONTROL_REPORT_API_URL = '/api/pharmacopilote/quality-control-report';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MedicalAssessmentService {
+export class QualityControlServiceService {
+    constructor(private httpUtil: HttpUtilService, private http: HttpClient) { }
 
-  constructor(private httpUtil: HttpUtilService, private http: HttpClient) { }
-
-  getMedicalAssessmentReport(medicalAssessment): Observable<any> {
-    return this.uploadData(medicalAssessment.caseExportFile, medicalAssessment);
+  getQualityControlReport(medicalAssessment): Observable<any> {
+    return this.uploadData(medicalAssessment , medicalAssessment.caseExportFile);
   }
 
-  uploadData(file: any, jsonData: any): Observable<any> {
+  uploadData(jsonData: any,file: any): Observable<any> {
     delete jsonData.caseExportFile;
     const formData: FormData = new FormData();
-
-    // Append the file
+    
     if(file){
         formData.append('case-export-file', file);
     }
@@ -29,6 +27,6 @@ export class MedicalAssessmentService {
     }
     formData.append('medical-assessment-data', JSON.stringify(jsonData));
 
-    return this.http.post(MEDICAL_ASSESSMENT_REPORT_API_URL, formData, { responseType: 'text' });
+    return this.http.post(QUALITY_CONTROL_REPORT_API_URL, formData, { responseType: 'text' });
   }
 }

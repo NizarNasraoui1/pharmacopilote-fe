@@ -1,7 +1,7 @@
 <form [formGroup]="medicalAssessmentForm">
-    <div class="create-medical-assessment">
+    <div class="quality-control">
         <div class="card title">
-            <h4>New Medical Assessment</h4>
+            <h4>New Quality Control</h4>
         </div>
 
         <div class="card">
@@ -10,32 +10,33 @@
         </div>
 
         <div class="card">
-            <p>Client Model :</p>
-            <p-dropdown [options]="models" optionLabel="name" optionValue="id" placeholder="Select a Model" formControlName="modelId" />
-        </div>
-
-        <div class="card">
             <p>VERBATIM:</p>
             <textarea rows="10" cols="90" formControlName="verbatim" pInputTextarea>
-        </textarea>
+            </textarea>
         </div>
 
-        <div class="card">
-            <p>Case export file:</p>
-            <pharmacopilote-file-upload formControlName="caseExportFile"></pharmacopilote-file-upload>
-        </div>
+            <div class="card">
+                <p>Case export file:</p>
+                <pharmacopilote-file-upload formControlName="caseExportFile"></pharmacopilote-file-upload>
+            </div>
 
         <div class="card">
             <p>RCP URL:</p>
             <input type="text" formControlName="rcpUrl" pInputText />
         </div>
 
+        <div class="card">
+            <p>REPORT:</p>
+            <textarea rows="10" cols="90" formControlName="report" pInputTextarea>
+            </textarea>
+        </div> <!-- This div was missing the closing tag -->
+
         <div *ngIf="!showReportClicked" class="flex justify-content-end submit-button">
             <p-button (click)="submit()" label="Submit" />
         </div>
 
         <div *ngIf="showReportClicked" class="card">
-            <p>Report :</p>
+            <p>Quality Control Report :</p>
             <p-fieldset>
                 <div *ngIf="!displayReport; else showReport" class="spinner">
                     <p-progressSpinner ariaLabel="loading" />
@@ -49,6 +50,5 @@
                 </ng-template>
             </p-fieldset>
         </div>
-
     </div>
 </form>

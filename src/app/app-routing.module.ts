@@ -23,6 +23,10 @@ import { AuthGardService as AuthGard } from './core/_services/auth-gard.service'
                 path:'medical-assessment',
                 loadChildren: ()=>import('./features/medical-assessment/medical-assessment.module').then((m)=>m.MedicalAssessmentModule)
             },
+            {   path:'quality-control',
+                loadChildren: ()=>import('./features/quality-control/quality-control.module').then((m)=>m.QualityControlModule)
+
+            },
             {
                 path:'my-account',
                 loadChildren: ()=>import('./features/my-account/my-account.module').then((m)=>m.MyAccountModule)

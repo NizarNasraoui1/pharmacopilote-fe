@@ -48,6 +48,21 @@ export class AppMenuComponent implements OnInit {
                     }
                 ],
             },
+            {
+                label: 'Quality Control',
+                items: [
+                    {
+                        label: 'Create Quality Control',
+                        icon: 'pi pi-fw pi-folder-plus',
+                        routerLink: ['./quality-control/create'],
+                    },
+                    {
+                        label: 'Search',
+                        icon: 'pi pi-fw pi-search',
+                        routerLink: ['./quality-control/search'],
+                    }
+                ],
+            },
 
 
 

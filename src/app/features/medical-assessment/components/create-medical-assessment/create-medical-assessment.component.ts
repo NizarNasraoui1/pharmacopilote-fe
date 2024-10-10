@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MedicalAssessmentService } from '../../services/medical-assessment.service';
 import { ModelService } from 'src/app/features/models/services/model.service';
 
@@ -14,6 +14,7 @@ export class CreateMedicalAssessmentComponent implements OnInit {
     models = [];
     displayReport = false;
     showReportClicked = false;
+    report;
 
     constructor(private formBuilder: FormBuilder,private medicalAssessmentService:MedicalAssessmentService,private modelService:ModelService) {
     }
@@ -25,7 +26,7 @@ export class CreateMedicalAssessmentComponent implements OnInit {
     initForm(){
         this.medicalAssessmentForm = this.formBuilder.group({
             businessId: ['', Validators.required],
-            model: ['', Validators.required],
+            modelId: ['', Validators.required],
             verbatim: ['', Validators.required],
             caseExportFile: ['', Validators.required],
             rcpUrl: ['', Validators.required]
@@ -33,9 +34,13 @@ export class CreateMedicalAssessmentComponent implements OnInit {
     }
 
     submit(){
-        console.log(this.medicalAssessmentForm.value);
         this.showReportClicked = true;
-        this.medicalAssessmentService.getMedicalAssessmentReport(this.medicalAssessmentForm.value).subscribe();
+        this.medicalAssessmentService.getMedicalAssessmentReport(this.medicalAssessmentForm.value).subscribe((res)=>{
+            this.report = res;
+            console.log(this.report);
+            this.displayReport = true;
+            console.log(this.displayReport);
+        });
     }
 
     getModels(){
