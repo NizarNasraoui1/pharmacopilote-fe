@@ -1,0 +1,33 @@
+<div class="create-data-entry">
+    <form [formGroup]="createDataEntryForm">
+        <div class="quality-control">
+            <div class="card title">
+                <h4>Create Data Entry</h4>
+            </div>
+
+            <div class="card">
+                <p>VERBATIM:</p>
+                <textarea rows="10" cols="90" formControlName="verbatim" pInputTextarea>
+                </textarea>
+            </div>
+
+            <div *ngIf="!showReportClicked" class="flex justify-content-end submit-button">
+                <p-button (click)="submit()" label="Submit" />
+            </div>
+
+            <div *ngIf="showReportClicked" class="card">
+                <p>Data Entry File :</p>
+                <p-fieldset>
+                    <div *ngIf="!displayReport; else showReport" class="spinner">
+                        <p-progressSpinner ariaLabel="loading" />
+                    </div>
+                    <ng-template #showReport>
+                        <p>Case file:</p>
+                        <pharmacopilote-file-upload *ngIf="file" pharmacopilote-file-upload [file]="file"></pharmacopilote-file-upload>
+                    </ng-template>
+                </p-fieldset>
+            </div>
+        </div>
+    </form>
+
+</div>

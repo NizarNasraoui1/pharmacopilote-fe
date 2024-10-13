@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModelService } from 'src/app/features/models/services/model.service';
 import { QualityControlServiceService } from '../../services/quality-control-service.service';
 
 @Component({

@@ -1,0 +1,30 @@
+.create-data-entry {
+    .title{
+        height: 72px;
+        display: flex;
+        justify-content: center;
+    }
+    .p-inputtextarea {
+      width: 100%;
+    }
+    .p-inputtext{
+        width: 100%;
+    }
+    .p-dropdown{
+        width: 100%;
+    }
+    .p-inputwrapper{
+        width: 100%;
+    }
+    .p-fieldset-legend {
+        display: none;
+    }
+    .spinner{
+        display: flex;
+        justify-content: center;
+    }
+    .submit-button{
+        margin-bottom: 2%;
+        width: 100%;
+    }
+  }

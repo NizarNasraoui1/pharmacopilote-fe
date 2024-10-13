@@ -24,18 +24,28 @@ export class AppMenuComponent implements OnInit {
                 ],
             },
             {
-                label: 'Models',
+                label: 'Data Entry',
                 items: [
                     {
-                        label: 'Models',
-                        icon: 'pi pi-fw pi-book',
-                        routerLink: ['./models'],
+                        label: 'Create Data Entry',
+                        icon: 'pi pi-fw pi-file',
+                        routerLink: ['./data-entry/create'],
+                    },
+                    {
+                        label: 'Search',
+                        icon: 'pi pi-fw pi-search',
+                        routerLink: ['./data-entry/search'],
                     }
                 ],
             },
             {
                 label: 'Medical Assessment',
                 items: [
+                    {
+                        label: 'Models',
+                        icon: 'pi pi-fw pi-book',
+                        routerLink: ['./models'],
+                    },
                     {
                         label: 'Create Medical Assessment',
                         icon: 'pi pi-fw pi-folder-plus',

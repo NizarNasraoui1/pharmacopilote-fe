@@ -16,6 +16,10 @@ import { AuthGardService as AuthGard } from './core/_services/auth-gard.service'
                 loadChildren: () => import('./features/dashboard/dashboard.module').then((m) => m.DashboardModule),
             },
             {
+                path:'data-entry',
+                loadChildren: ()=>import('./features/data-entry/data-entry.module').then((m)=>m.DataEntryModule)
+            },
+            {
                 path:'models',
                 loadChildren: ()=>import('./features/models/models.module').then((m)=>m.ModelsModule)
             },
