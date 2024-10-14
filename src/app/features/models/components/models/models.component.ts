@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ModelsComponent implements OnInit {
     models: any[];
     addModelForm :FormGroup<any>;
+    update = false;
+    visible: boolean = false;
 
     constructor(private modelService:ModelService,private formBuilder:FormBuilder){}
 
@@ -20,6 +22,7 @@ export class ModelsComponent implements OnInit {
 
     initForm(){
         this.addModelForm = this.formBuilder.group({
+            id: [''],
             name: ['', Validators.required],
             verbatim: ['', Validators.required],
             report: ['', Validators.required]
@@ -32,7 +35,7 @@ export class ModelsComponent implements OnInit {
         });
     }
 
-    visible: boolean = false;
+
 
     addModel() {
         this.visible = true;
@@ -44,15 +47,27 @@ export class ModelsComponent implements OnInit {
 
     saveModel(){
         if(this.isFormValid()){
-            this.modelService.saveModel(this.addModelForm.value).subscribe((res)=>{
-                this.getModels();
-                this.visible = false;
-                this.addModelForm.reset();
-            })
+            if(!this.update){
+                this.modelService.saveModel(this.addModelForm.value).subscribe((res)=>{
+                    this.afterSaveOrUpdate();
+                })
+            }
+            else{
+                this.modelService.updateModel(this.addModelForm.value).subscribe((res)=>{
+                    this.afterSaveOrUpdate();
+                })
+            }
         }
         else{
             this.addModelForm.markAllAsTouched();
         }
+    }
+
+
+    afterSaveOrUpdate(){
+        this.getModels();
+        this.visible = false;
+        this.addModelForm.reset();
     }
 
     cancel(){
@@ -62,10 +77,12 @@ export class ModelsComponent implements OnInit {
 
     showModel(model: any){
         this.addModelForm = this.formBuilder.group({
+            id: [model.id],
             name: [model.name, Validators.required],
             verbatim: [model.verbatim, Validators.required],
             report: [model.report, Validators.required]
         });
         this.visible = true;
+        this.update = true;
     }
 }

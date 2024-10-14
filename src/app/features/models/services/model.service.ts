@@ -18,4 +18,8 @@ export class ModelService {
   saveModel(model){
     return this.httpUtil.post(MODELS_API_URL,model);
   }
+
+  updateModel(model){
+    return this.httpUtil.put(MODELS_API_URL,model);
+  }
 }
