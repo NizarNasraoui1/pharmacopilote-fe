@@ -6,6 +6,7 @@
     <p-table [value]="assessmentBatch" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
+                <th>XML Reference</th>
                 <th>Country</th>
                 <th>Authority Reference</th>
                 <th>Seriousness of Case</th>
@@ -20,6 +21,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-caseReport let-i="rowIndex">
             <tr>
+                <td>{{ caseReport.fileName }}</td>
                 <td>{{ caseReport.country?? 'Unknown' }}</td>
                 <td>{{ caseReport.authorityReference?? 'Unknown' }}</td>
                 <td>{{ caseReport.seriousnessOfCase?? 'Unknown' }}</td>
