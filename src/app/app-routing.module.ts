@@ -32,6 +32,10 @@ import { AuthGardService as AuthGard } from './core/_services/auth-gard.service'
 
             },
             {
+                path:'batch-assessment',
+                loadChildren: ()=>import('./features/batch-assessment/batch-assessment.module').then((m)=>m.BatchAssessmentModule)
+            },
+            {
                 path:'my-account',
                 loadChildren: ()=>import('./features/my-account/my-account.module').then((m)=>m.MyAccountModule)
             },

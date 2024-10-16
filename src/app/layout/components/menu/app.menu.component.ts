@@ -73,9 +73,21 @@ export class AppMenuComponent implements OnInit {
                     }
                 ],
             },
-
-
-
+            {
+                label: 'Batch Assessment',
+                items: [
+                    {
+                        label: 'Create Batch Assessment',
+                        icon: 'pi pi-fw pi-folder-plus',
+                        routerLink: ['./batch-assessment/create'],
+                    },
+                    {
+                        label: 'Search',
+                        icon: 'pi pi-fw pi-search',
+                        routerLink: ['./batch-assessment/search'],
+                    }
+                ],
+            },
             {
                 label: 'Administration',
                 items: [
