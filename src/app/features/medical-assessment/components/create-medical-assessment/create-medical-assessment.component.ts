@@ -15,6 +15,7 @@ export class CreateMedicalAssessmentComponent implements OnInit {
     displayReport = false;
     showReportClicked = false;
     report;
+    methods = [{ name: 'FRENSH',value: false},{name:'WHO',value:true}];
 
     constructor(private formBuilder: FormBuilder,private medicalAssessmentService:MedicalAssessmentService,private modelService:ModelService) {
     }
@@ -29,7 +30,8 @@ export class CreateMedicalAssessmentComponent implements OnInit {
             modelId: ['', Validators.required],
             verbatim: ['', Validators.required],
             caseExportFile: ['', Validators.required],
-            rcpUrl: ['', Validators.required]
+            rcpUrl: ['', Validators.required],
+            isWho: ['', Validators.required]
           });
     }
 

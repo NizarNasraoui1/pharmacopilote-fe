@@ -12,9 +12,11 @@ export class CreateBatchAssessmentComponent implements OnInit {
     visible: boolean = false;
     report = "";
     assessmentBatch;
-    fileUploaded = false;
-
+    batchUploaded = false;
+    productForm;
     reports = [];
+    files;
+    batchId;
 
     constructor(private batchAssessmentService:BatchAssessmentService){}
 
@@ -23,22 +25,30 @@ export class CreateBatchAssessmentComponent implements OnInit {
     }
 
     onFileUploaded(event){
-        this.fileUploaded = true;
-        this.getAssessmentBatch(event);
+        this.files = event;
     }
 
+    submitFilesAndProductForm(){
+        this.batchAssessmentService.getBatchAssessment(this.files,this.productForm).subscribe((res)=>{
+            this.assessmentBatch = res.medicalEvents;
+            this.generateReportList();
+            this.batchId = res.id;
+            this.batchUploaded = true;
+        });
+    }
+
+    getReport(caseId){
+        this.updateReportStatus(caseId,ButtonStatusEnum.LOADING);
+        this.batchAssessmentService.getReport(this.batchId,caseId).subscribe((res)=>{
+            this.report = res;
+            console.log(this.report);
+            this.updateReportStatus(caseId,ButtonStatusEnum.LOADED);
+        });
+    }
 
     showDialog(i) {
         this.report = this.reports[i].report;
         this.visible = true;
-    }
-
-    getAssessmentBatch(file){
-        console.log(file);
-        this.batchAssessmentService.getBatchAssessment(file).subscribe((res)=>{
-            this.assessmentBatch = res.medicalEvents;
-            this.generateReportList();
-        });
     }
 
     generateReportList(){
@@ -51,6 +61,15 @@ export class CreateBatchAssessmentComponent implements OnInit {
             })
         })
     }
+
+    updateReportStatus(caseId, status) {
+        this.reports = this.reports.map((report) => {
+          if (report.id === caseId) {
+            report.status = status;
+          }
+          return report;
+        });
+      }
 
 
 }

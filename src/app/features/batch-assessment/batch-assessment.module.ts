@@ -10,6 +10,8 @@ import { DialogModule } from 'primeng/dialog';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ButtonModule } from 'primeng/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     DialogModule,
     ProgressSpinnerModule,
     ButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    InputTextareaModule,
+    FormsModule
   ]
 })
 export class BatchAssessmentModule { }

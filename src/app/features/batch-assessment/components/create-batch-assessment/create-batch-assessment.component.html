@@ -1,6 +1,19 @@
-<ng-container *ngIf="!fileUploaded">
-    <pharmacopilote-file-upload (onFileUploaded)="onFileUploaded($event)"></pharmacopilote-file-upload>
-</ng-container>
+<div class="create-batch-assessment">
+    <div class="card title">
+        <h4>Create Assessment Batch</h4>
+    </div>
+    <ng-container *ngIf="!batchUploaded">
+        <div class="card">
+            <p>PRODUCT FORM:</p>
+            <textarea rows="10" cols="90" [(ngModel)]="productForm" pInputTextarea>
+            </textarea>
+        </div>
+        <pharmacopilote-file-upload (onFileUploaded)="onFileUploaded($event)"></pharmacopilote-file-upload>
+        <div class="flex justify-content-end submit-button submit-files">
+            <p-button (click)="submitFilesAndProductForm()" label="Submit" />
+        </div>
+    </ng-container>
+</div>
 
 <div *ngIf="assessmentBatch && reports" class="card">
     <p-table [value]="assessmentBatch" [tableStyle]="{ 'min-width': '50rem' }">
@@ -41,7 +54,7 @@
                     </div>
                 </td>
                 <td *ngIf="reports[i].status==buttonStatusEnum.NOT_CLICKED">
-                    <p-button label="Analyse" [outlined]="true" />
+                    <p-button (click)="getReport(caseReport.id)" label="Analyse" [outlined]="true" />
                 </td>
             </tr>
         </ng-template>

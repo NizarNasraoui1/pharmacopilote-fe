@@ -1,20 +1,24 @@
-:host ::ng-deep .geek-spinner .p-progress-spinner-circle {
-    animation: geek 8s ease-in-out infinite;
-}
-
-@keyframes geek {
-  100%,
-  0% {
-        stroke: #d62d20;
+.create-batch-assessment {
+    .title{
+        height: 72px;
+        display: flex;
+        justify-content: center;
+    }
+    .p-inputtextarea {
+      width: 100%;
+    }
+    .p-inputwrapper{
+        width: 100%;
+    }
+    .p-fieldset-legend {
+        display: none;
+    }
+    .spinner{
+        display: flex;
+        justify-content: center;
+    }
+    .submit-files{
+        margin-top: 2%;
+        margin-bottom: 1%;
+    }
   }
-  40% {
-        stroke: #d62d20;
-  }
-  66% {
-        stroke: #d62d20;
-  }
-  80%,
-  90% {
-        stroke: #d62d20;
-  }
-}
