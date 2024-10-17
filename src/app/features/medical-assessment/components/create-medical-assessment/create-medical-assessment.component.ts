@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MedicalAssessmentService } from '../../services/medical-assessment.service';
 import { ModelService } from 'src/app/features/models/services/model.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'pharmacopilote-create-medical-assessment',
@@ -17,7 +18,7 @@ export class CreateMedicalAssessmentComponent implements OnInit {
     report;
     methods = [{ name: 'FRENSH',value: false},{name:'WHO',value:true}];
 
-    constructor(private formBuilder: FormBuilder,private medicalAssessmentService:MedicalAssessmentService,private modelService:ModelService) {
+    constructor(private formBuilder: FormBuilder,private medicalAssessmentService:MedicalAssessmentService,private modelService:ModelService,private messageService:MessageService) {
     }
     ngOnInit(): void {
         this.initForm();
@@ -36,13 +37,28 @@ export class CreateMedicalAssessmentComponent implements OnInit {
     }
 
     submit(){
+        if(this.getErrorMsg()){
+            this.messageService.add({severity:'warn', summary: 'Warn', detail: this.getErrorMsg()});
+            return;
+        }
         this.showReportClicked = true;
         this.medicalAssessmentService.getMedicalAssessmentReport(this.medicalAssessmentForm.value).subscribe((res)=>{
             this.report = res;
-            console.log(this.report);
             this.displayReport = true;
-            console.log(this.displayReport);
         });
+    }
+
+    getErrorMsg(){
+        if(this.medicalAssessmentForm.value.isWho==null){
+            return 'Please fill in the assessment method';
+        }
+        if(this.medicalAssessmentForm.value.modelId==''){
+            return 'Please fill in the model';
+        }
+        if(!this.medicalAssessmentForm.value.caseExportFile){
+            return 'Please upload a case export file';
+        }
+        return null;
     }
 
     getModels(){

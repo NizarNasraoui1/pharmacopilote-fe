@@ -21,6 +21,6 @@ export class BatchAssessmentService {
     }
 
     getReport(batchId,caseId): Observable<any> {
-        return this.http.get(`${BATCH_ASSESSMENT_REPORT_API_URL}/report/${batchId}/${caseId}`);
+        return this.http.get(`${BATCH_ASSESSMENT_REPORT_API_URL}/report/${batchId}/${caseId}`, { responseType: 'text' });
     }
 }

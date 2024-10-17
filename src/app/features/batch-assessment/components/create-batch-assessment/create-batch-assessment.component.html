@@ -4,7 +4,7 @@
     </div>
     <ng-container *ngIf="!batchUploaded">
         <div class="card">
-            <p>PRODUCT FORM:</p>
+            <p>PRODUCTS FORM:</p>
             <textarea rows="10" cols="90" [(ngModel)]="productForm" pInputTextarea>
             </textarea>
         </div>
@@ -22,12 +22,7 @@
                 <th>XML Reference</th>
                 <th>Country</th>
                 <th>Authority Reference</th>
-                <th>Seriousness of Case</th>
-                <th>Event</th>
                 <th>Product Names</th>
-                <th>Substance Name</th>
-                <th>Dosage Form</th>
-                <th>Administration Route</th>
                 <th>Outcome</th>
                 <th></th>
             </tr>
@@ -37,12 +32,7 @@
                 <td>{{ caseReport.fileName }}</td>
                 <td>{{ caseReport.country?? 'Unknown' }}</td>
                 <td>{{ caseReport.authorityReference?? 'Unknown' }}</td>
-                <td>{{ caseReport.seriousnessOfCase?? 'Unknown' }}</td>
-                <td>{{ caseReport.event ?? 'Unknown' }}</td>
                 <td>{{ caseReport.productName?? 'Unknown' }}</td>
-                <td>{{ caseReport.substanceName?? 'Unknown' }}</td>
-                <td>{{ caseReport.dosageForm?? 'Unknown' }}</td>
-                <td>{{ caseReport.administrationRoute?? 'Unknown' }}</td>
                 <td>{{ caseReport.outcome?? 'Unknown' }}</td>
                 <td *ngIf="reports[i].status==buttonStatusEnum.LOADING">
                     <div class="flex justify-content-center">
@@ -61,10 +51,9 @@
     </p-table>
 </div>
 
-<p-dialog header="Report" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+<p-dialog header="Report" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }">
     <span class="block mb-5">{{report}}</span>
     <div class="flex justify-content-end gap-2">
         <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
-        <p-button label="Save" (onClick)="visible = false" />
     </div>
 </p-dialog>

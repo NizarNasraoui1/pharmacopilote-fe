@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ButtonStatusEnum } from '../../models/button-status.enum';
 import { BatchAssessmentService } from '../../services/batch-assessment.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'pharmacopilote-create-batch-assessment',
@@ -18,10 +19,9 @@ export class CreateBatchAssessmentComponent implements OnInit {
     files;
     batchId;
 
-    constructor(private batchAssessmentService:BatchAssessmentService){}
+    constructor(private batchAssessmentService:BatchAssessmentService,private messageService:MessageService){}
 
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
     }
 
     onFileUploaded(event){
@@ -29,6 +29,11 @@ export class CreateBatchAssessmentComponent implements OnInit {
     }
 
     submitFilesAndProductForm(){
+        console.log(this.getFormErrorMsg());
+        if(this.getFormErrorMsg()!=null){
+            this.messageService.add({severity:'warn', summary: 'Warn', detail: this.getFormErrorMsg()});
+            return;
+        }
         this.batchAssessmentService.getBatchAssessment(this.files,this.productForm).subscribe((res)=>{
             this.assessmentBatch = res.medicalEvents;
             this.generateReportList();
@@ -37,37 +42,45 @@ export class CreateBatchAssessmentComponent implements OnInit {
         });
     }
 
+    getFormErrorMsg(){
+        if(!this.productForm){
+            return "Please fill in the product form";
+        }
+        if(!this.files){
+            return "Please upload files";
+        }
+        return null;
+    }
+
     getReport(caseId){
-        this.updateReportStatus(caseId,ButtonStatusEnum.LOADING);
+        this.updateReportStatusAndContent(caseId,ButtonStatusEnum.LOADING);
         this.batchAssessmentService.getReport(this.batchId,caseId).subscribe((res)=>{
-            this.report = res;
-            console.log(this.report);
-            this.updateReportStatus(caseId,ButtonStatusEnum.LOADED);
+            this.updateReportStatusAndContent(caseId,ButtonStatusEnum.LOADED,res);
         });
     }
 
     showDialog(i) {
-        this.report = this.reports[i].report;
+        this.report = this.reports[i].content;
         this.visible = true;
     }
 
     generateReportList(){
-        this.reports = [];
         this.assessmentBatch.forEach((batch)=>{
-            this.reports.push({
+            this.reports = [...this.reports,{
                 "id":batch.id,
                 "status":ButtonStatusEnum.NOT_CLICKED,
-                "report":""
-            })
-        })
+                "content":""
+            }];
+        });
     }
 
-    updateReportStatus(caseId, status) {
-        this.reports = this.reports.map((report) => {
-          if (report.id === caseId) {
-            report.status = status;
+    updateReportStatusAndContent(caseId, status, content?) {
+        this.reports = this.reports.map((e) => {
+          if (e.id === caseId) {
+            e.status = status;
+            e.content = content;
           }
-          return report;
+          return e;
         });
       }
 
