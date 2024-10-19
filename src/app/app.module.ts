@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { SpinnerComponent } from './shared/components/spinner-component/spinner-component';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
@@ -23,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
         FormsModule,
         ReactiveFormsModule,
         MatSelectModule,
+        SpinnerComponent
         ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
