@@ -1,0 +1,183 @@
+<ng-container *ngIf="data">
+    <div class="card">
+        <!-- Reporter Information -->
+        <h3 class="section-title">Reporter Information</h3>
+        <div class="info-block">
+          <p><strong>Function:</strong> {{ data.reporter.function }}</p>
+          <p><strong>Country:</strong> {{ data.reporter.country }}</p>
+        </div>
+</div>
+
+<div class="card">
+<!-- Patient Information -->
+<h3 class="section-title">Patient Information</h3>
+<div class="info-block">
+  <p><strong>Initials:</strong> {{ data.patient.initials }}</p>
+  <p><strong>Sex:</strong> {{ data.patient.sex }}</p>
+  <p><strong>Age:</strong> {{ data.patient.age }}</p>
+  <p><strong>Age Group:</strong> {{ data.patient.ageGroup }}</p>
+</div>
+</div>
+
+<div class="card">
+
+<!-- Medical History -->
+<h3 class="section-title">Medical History</h3>
+<p-table [value]="data.medicalHistory" class="styled-table">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Reported History</th>
+      <th>LLT</th>
+      <th>PT</th>
+      <th>SOC</th>
+      <th>Continued</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-history>
+    <tr>
+      <td>{{ history.reportedHistory }}</td>
+      <td>{{ history.historyCodedWithMedDRA.llt }}</td>
+      <td>{{ history.historyCodedWithMedDRA.pt }}</td>
+      <td>{{ history.historyCodedWithMedDRA.soc }}</td>
+      <td>{{ history.continued }}</td>
+      <td>{{ history.dateOfStart }}</td>
+      <td>{{ history.dateOfEnd }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+</div>
+
+<div class="card">
+<!-- Drugs: Concomitant and Suspect Drugs -->
+<h3 class="section-title">Concomitant Drugs</h3>
+<p-table [value]="data.drugs.concomitantDrugs" class="styled-table">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Substance Name</th>
+      <th>Action Taken</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Batch Number</th>
+      <th>Form</th>
+      <th>Route</th>
+      <th>Dosage</th>
+      <th>Posology</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-drug>
+    <tr>
+      <td>{{ drug.substanceName }}</td>
+      <td>{{ drug.actionTaken }}</td>
+      <td>{{ drug.drugStartDate }}</td>
+      <td>{{ drug.drugEndDate }}</td>
+      <td>{{ drug.batchNumber }}</td>
+      <td>{{ drug.drugForm }}</td>
+      <td>{{ drug.routeOfAdministration }}</td>
+      <td>{{ drug.drugDose }}</td>
+      <td>{{ drug.posology }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+</div>
+<div class="card">
+    <h3 class="section-title">Suspect Drugs</h3>
+<p-table [value]="data.drugs.suspectDrugs" class="styled-table">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Substance Name</th>
+      <th>Action Taken</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Batch Number</th>
+      <th>Form</th>
+      <th>Route</th>
+      <th>Dosage</th>
+      <th>Posology</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-drug>
+    <tr>
+      <td>{{ drug.substanceName }}</td>
+      <td>{{ drug.actionTaken }}</td>
+      <td>{{ drug.drugStartDate }}</td>
+      <td>{{ drug.drugEndDate }}</td>
+      <td>{{ drug.batchNumber }}</td>
+      <td>{{ drug.drugForm }}</td>
+      <td>{{ drug.routeOfAdministration }}</td>
+      <td>{{ drug.drugDose }}</td>
+      <td>{{ drug.posology }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+</div>
+
+
+
+<div class="card">
+    <!-- Events -->
+<h3 class="section-title">Events</h3>
+<p-table [value]="data.events" class="styled-table">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Reported Event (Native)</th>
+      <th>Translated Event</th>
+      <th>LLT</th>
+      <th>PT</th>
+      <th>SOC</th>
+      <th>Outcome</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Seriousness Criteria</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-event>
+    <tr>
+      <td>{{ event.reportedEventNative }}</td>
+      <td>{{ event.reportedEventTranslated }}</td>
+      <td>{{ event.eventCodedWithMedDRA.llt }}</td>
+      <td>{{ event.eventCodedWithMedDRA.pt }}</td>
+      <td>{{ event.eventCodedWithMedDRA.soc }}</td>
+      <td>{{ event.outcome }}</td>
+      <td>{{ event.eventOnsetDate }}</td>
+      <td>{{ event.eventEndDate }}</td>
+      <td>{{ event.seriousnessCriteria }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+</div>
+
+
+<div class="card">
+    <!-- Lab Tests -->
+<h3 class="section-title">Lab Tests</h3>
+<p-table [value]="data.labTests" class="styled-table">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Date</th>
+      <th>Reported Test</th>
+      <th>LLT</th>
+      <th>PT</th>
+      <th>SOC</th>
+      <th>Result</th>
+      <th>Value</th>
+      <th>Unit</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-test>
+    <tr>
+      <td>{{ test.date }}</td>
+      <td>{{ test.reportedTest }}</td>
+      <td>{{ test.testCodedWithMedDRA.llt }}</td>
+      <td>{{ test.testCodedWithMedDRA.pt }}</td>
+      <td>{{ test.testCodedWithMedDRA.soc }}</td>
+      <td>{{ test.result }}</td>
+      <td>{{ test.value }}</td>
+      <td>{{ test.unit }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+</div>
+
+</ng-container>

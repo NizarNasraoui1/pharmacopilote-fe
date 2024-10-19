@@ -24,12 +24,27 @@ export class AppMenuComponent implements OnInit {
                 ],
             },
             {
-                label: 'Data Entry',
+                label: 'XML Generator',
+                items: [
+                    {
+                        label: 'Create XML',
+                        icon: 'pi pi-fw pi-file',
+                        routerLink: ['./data-entry/create'],
+                    },
+                    {
+                        label: 'Search',
+                        icon: 'pi pi-fw pi-search',
+                        routerLink: ['./data-entry/search'],
+                    }
+                ],
+            },
+            {
+                label: 'Data Entry Helper',
                 items: [
                     {
                         label: 'Create Data Entry',
                         icon: 'pi pi-fw pi-file',
-                        routerLink: ['./data-entry/create'],
+                        routerLink: ['./data-entry-helper/create'],
                     },
                     {
                         label: 'Search',
