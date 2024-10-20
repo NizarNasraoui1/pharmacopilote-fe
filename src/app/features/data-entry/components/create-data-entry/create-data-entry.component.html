@@ -23,7 +23,7 @@
                     </div>
                     <ng-template #showReport>
                         <p>Case file:</p>
-                        <pharmacopilote-file-upload *ngIf="file" pharmacopilote-file-upload [file]="file"></pharmacopilote-file-upload>
+                        <pharmacopilote-file-upload *ngIf="file" pharmacopilote-file-upload [file]="file" [disableClear]="true" [uploadDisabled]="true"></pharmacopilote-file-upload>
                     </ng-template>
                 </p-fieldset>
             </div>
