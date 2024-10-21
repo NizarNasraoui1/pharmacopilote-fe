@@ -24,7 +24,6 @@ export class ModelsComponent implements OnInit {
         this.addModelForm = this.formBuilder.group({
             id: [''],
             name: ['', Validators.required],
-            verbatim: ['', Validators.required],
             report: ['', Validators.required]
         })
     }
@@ -38,6 +37,7 @@ export class ModelsComponent implements OnInit {
 
 
     addModel() {
+        this.addModelForm.reset();
         this.visible = true;
     }
 
@@ -79,7 +79,6 @@ export class ModelsComponent implements OnInit {
         this.addModelForm = this.formBuilder.group({
             id: [model.id],
             name: [model.name, Validators.required],
-            verbatim: [model.verbatim, Validators.required],
             report: [model.report, Validators.required]
         });
         this.visible = true;

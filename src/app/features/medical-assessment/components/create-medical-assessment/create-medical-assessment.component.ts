@@ -55,9 +55,9 @@ export class CreateMedicalAssessmentComponent implements OnInit {
         if(this.medicalAssessmentForm.value.modelId==''){
             return 'Please fill in the model';
         }
-        if(!this.medicalAssessmentForm.value.caseExportFile){
-            return 'Please upload a case export file';
-        }
+        // if(!this.medicalAssessmentForm.value.caseExportFile){
+        //     return 'Please upload a case export file';
+        // }
         return null;
     }
 
@@ -66,4 +66,21 @@ export class CreateMedicalAssessmentComponent implements OnInit {
             this.models = res;
         });
     }
+
+    copyToClipboard(content: string) {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(content).then(() => {
+            this.messageService.add({severity: 'success', summary: 'Success', detail: 'Report copied to clipboard'});
+          });
+        } else {
+          const textArea = document.createElement('textarea');
+          textArea.value = content;
+          document.body.appendChild(textArea);
+          textArea.select();
+            document.execCommand('copy');
+            this.messageService.add({severity: 'success', summary: 'Success', detail: 'Report copied to clipboard'});
+          document.body.removeChild(textArea);
+        }
+      }
+
 }

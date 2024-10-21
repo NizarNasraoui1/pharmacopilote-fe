@@ -1,30 +1,38 @@
 .create-medical-assessment {
-    .title{
+    .title {
         height: 72px;
         display: flex;
         justify-content: center;
     }
     .p-inputtextarea {
-      width: 100%;
-    }
-    .p-inputtext{
         width: 100%;
     }
-    .p-dropdown{
+    .p-inputtext {
         width: 100%;
     }
-    .p-inputwrapper{
+    .p-dropdown {
+        width: 100%;
+    }
+    .p-inputwrapper {
         width: 100%;
     }
     .p-fieldset-legend {
         display: none;
     }
-    .spinner{
+    .spinner {
         display: flex;
         justify-content: center;
     }
-    .submit-button{
+    .submit-button {
         margin-bottom: 2%;
         width: 100%;
     }
-  }
+}
+.copy-report {
+    cursor: pointer;
+    margin-bottom: 2%;
+}
+.report-paragraph {
+    text-align: justify;
+}
+

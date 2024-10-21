@@ -47,7 +47,13 @@
                 </div>
                 <ng-template #showReport>
                     <div>
-                        <p class="m-0">
+                        <div (click)="copyToClipboard(report)" class="copy-report flex justify-content-end">
+                            <i
+                            class="pi pi-fw pi-copy text-blue-500 mr-2"
+                            style="vertical-align: center; font-size: 19px;"
+                          ></i>
+                        </div>
+                        <p class="m-0 report-paragraph">
                             {{ report }}
                         </p>
                     </div>
@@ -57,3 +63,4 @@
 
     </div>
 </form>
+
