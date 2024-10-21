@@ -15,8 +15,13 @@ export class CreateMedicalAssessmentComponent implements OnInit {
     models = [];
     displayReport = false;
     showReportClicked = false;
-    report;
+    report ="a";
     methods = [{ name: 'FRENSH',value: false},{name:'WHO',value:true}];
+    visible: boolean = false;
+    name: string;
+    saved = false;
+    saveErrorMsg = "";
+
 
     constructor(private formBuilder: FormBuilder,private medicalAssessmentService:MedicalAssessmentService,private modelService:ModelService,private messageService:MessageService) {
     }
@@ -27,7 +32,6 @@ export class CreateMedicalAssessmentComponent implements OnInit {
 
     initForm(){
         this.medicalAssessmentForm = this.formBuilder.group({
-            businessId: ['', Validators.required],
             modelId: ['', Validators.required],
             verbatim: ['', Validators.required],
             caseExportFile: ['', Validators.required],
@@ -55,9 +59,6 @@ export class CreateMedicalAssessmentComponent implements OnInit {
         if(this.medicalAssessmentForm.value.modelId==''){
             return 'Please fill in the model';
         }
-        // if(!this.medicalAssessmentForm.value.caseExportFile){
-        //     return 'Please upload a case export file';
-        // }
         return null;
     }
 
@@ -82,5 +83,27 @@ export class CreateMedicalAssessmentComponent implements OnInit {
           document.body.removeChild(textArea);
         }
       }
+
+      onSave(){
+        if(!this.name || this.name===''){
+            this.saveErrorMsg = "Please fill in the name";
+            return;
+        }
+        this.showDialog();
+        this.medicalAssessmentService.saveMedicalAssessmentReport(this.name,this.report).subscribe((res)=>{
+            this.visible = false;
+            this.messageService.add({severity:'success', summary: 'Success', detail: 'Medical Assessment saved'});
+        })
+
+      }
+
+      showDialog() {
+        this.visible = true;
+      }
+
+      refreshPage() {
+        location.reload();
+    }
+
 
 }

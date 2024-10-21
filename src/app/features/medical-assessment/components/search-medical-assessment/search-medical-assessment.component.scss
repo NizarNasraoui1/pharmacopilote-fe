@@ -1,0 +1,98 @@
+.layout-wrapper {
+    overflow-x: scroll;
+}
+
+/* ::ng-deep .p-datatable-tbody > tr > td {
+    @media(max-width: 960px){
+        display: initial !important;
+    width: 100% !important;
+    align-items: center;
+    justify-content: space-between;
+    }
+} */
+@media screen and (max-width: 960px) {
+    #pr_id_2 .p-datatable-tbody>tr>td {
+        display: table-cell !important;
+    }
+}
+
+
+@media screen and (max-width: 960px) {
+
+    #pr_id_2 .p-datatable-thead>tr>th,
+    #pr_id_2 .p-datatable-tfoot>tr>td {
+        display: table-cell !important;
+    }
+}
+
+
+.p-datatable-wrapper{
+    border-radius: 9px;
+}
+
+td{
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+}
+
+/* .p-paginator{
+    display: none;
+} */
+
+.questionnaire-response-line{
+    cursor: pointer;
+}
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+p-table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+th {
+    background-color: #fff;
+    color: #333;
+    text-align: left;
+    padding: 8px;
+    font-weight: normal;
+    border-bottom: 2px solid #ddd;
+}
+
+td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr.questionnaire-response-line:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.medical-assessment-search-container input[pInputText] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+}
+
+p-paginator {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    background-color: #fff;
+}
