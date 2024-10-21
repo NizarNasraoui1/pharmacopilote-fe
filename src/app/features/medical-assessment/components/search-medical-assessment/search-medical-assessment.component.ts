@@ -13,7 +13,7 @@ import { MedicalAssessmentService } from '../../services/medical-assessment.serv
 })
 export class SearchMedicalAssessmentComponent implements OnInit,OnDestroy {
 
-    questionnaires!: any[];
+    data!: any[];
 
     representatives!: any[];
 
@@ -31,6 +31,10 @@ export class SearchMedicalAssessmentComponent implements OnInit,OnDestroy {
 
     totalRecords = 0;
 
+    visible = false;
+
+    report = "";
+
     subs = new SubSink();
 
     constructor(private formBuilder: FormBuilder,private medicalAssessmentService:MedicalAssessmentService ,private router:Router) {}
@@ -38,7 +42,7 @@ export class SearchMedicalAssessmentComponent implements OnInit,OnDestroy {
     ngOnInit() {
         this.initForm();
         this.subscribeToFormValueChanges();
-        this.searchQuestionnaires();
+        this.searchMedicalAssessments();
     }
 
     initForm(){
@@ -63,19 +67,19 @@ export class SearchMedicalAssessmentComponent implements OnInit,OnDestroy {
         this.form.valueChanges.pipe(debounceTime(1000)).subscribe(()=>{
             if(this.isFormDatesValid()){
                 this.currentPage = 0;
-                this.searchQuestionnaires();
+                this.searchMedicalAssessments();
             }
         })
     }
 
-    searchQuestionnaires(){
+    searchMedicalAssessments(){
         const formValue= this.form.value;
-        const searchQuestionnaireRequest: any = {
+        const searchMedicalAssessmentsRequest: any = {
             name: formValue.name,
             date: formValue.birthdate=='JJ/MM/AAAA'?null:formValue.date
         }
-        this.subs.sink = this.medicalAssessmentService.searchQuestionnaires(this.currentPage,this.pageSize,searchQuestionnaireRequest).subscribe((res)=>{
-            this.questionnaires = res.content;
+        this.subs.sink = this.medicalAssessmentService.searchMedicalAssessments(this.currentPage,this.pageSize,searchMedicalAssessmentsRequest).subscribe((res)=>{
+            this.data = res.content;
             this.totalRecords = res.totalElements;
         });
     }
@@ -83,7 +87,12 @@ export class SearchMedicalAssessmentComponent implements OnInit,OnDestroy {
     onPageChange(event: any) {
         this.currentPage = event.page;
         this.pageSize = event.rows;
-        this.searchQuestionnaires();
+        this.searchMedicalAssessments();
+    }
+
+    viewAssessment(medicalAssessment) {
+        this.report = medicalAssessment.report;
+        this.visible = true;
     }
 
     ngOnDestroy() {
