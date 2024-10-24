@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DataEntryRoutingModule } from './data-entry-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadComponent } from 'src/app/shared/components/file-upload/file-upload.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -25,7 +25,7 @@ import { CreateDataEntryComponent } from './components/create-data-entry/create-
     DropdownModule,
     FieldsetModule,
     ProgressSpinnerModule,
-    ButtonModule,
+    ButtonModule
   ]
 })
 export class DataEntryModule { }
