@@ -36,7 +36,7 @@ export class CreateMedicalAssessmentComponent implements OnInit {
             verbatim: ['', Validators.required],
             caseExportFile: ['', Validators.required],
             rcpUrl: ['', Validators.required],
-            isWho: ['', Validators.required]
+            isWho: [null, Validators.required]
           });
     }
 
@@ -53,9 +53,6 @@ export class CreateMedicalAssessmentComponent implements OnInit {
     }
 
     getErrorMsg(){
-        if(this.medicalAssessmentForm.value.isWho==null){
-            return 'Please fill in the assessment method';
-        }
         if(this.medicalAssessmentForm.value.modelId==''){
             return 'Please fill in the model';
         }
@@ -94,7 +91,6 @@ export class CreateMedicalAssessmentComponent implements OnInit {
             this.visible = false;
             this.messageService.add({severity:'success', summary: 'Success', detail: 'Medical Assessment saved'});
         })
-
       }
 
       showDialog() {

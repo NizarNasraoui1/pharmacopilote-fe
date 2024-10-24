@@ -3,7 +3,7 @@ import { DataEntryHelperViewComponent } from '../data-entry-helper/data-entry-he
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import {  Router } from '@angular/router';
-import { DataEntryServiceService } from '../../services/data-entry-service.service';
+import { DataEntryHelperService } from '../../services/data-entry-helper.service';
 import { FormsModule } from '@angular/forms';
 import { SpinnerService } from 'src/app/shared/services/spinner-service';
 
@@ -17,7 +17,7 @@ import { SpinnerService } from 'src/app/shared/services/spinner-service';
 export class CreateDataEntryHelperComponent {
     entryContent;
 
-        constructor(private router:Router,private dataEntryHelperService:DataEntryServiceService,private spinnerService: SpinnerService){}
+        constructor(private router:Router,private dataEntryHelperService:DataEntryHelperService,private spinnerService: SpinnerService){}
 
         submit() {
             this.spinnerService.show();

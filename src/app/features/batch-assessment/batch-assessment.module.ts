@@ -11,7 +11,9 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ButtonModule } from 'primeng/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaginatorModule } from 'primeng/paginator';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,10 @@ import { FormsModule } from '@angular/forms';
     ButtonModule,
     MatProgressSpinnerModule,
     InputTextareaModule,
-    FormsModule
+    FormsModule,
+    PaginatorModule,
+    ReactiveFormsModule,
+    InputMaskModule
   ]
 })
 export class BatchAssessmentModule { }

@@ -1,1 +1,69 @@
-<p>search-batch-assessment works!</p>
+<div class="medical-assessment-search-container">
+    <div class="card">
+        <div class="title">
+            <h3>Recherche</h3>
+        </div>
+        <form [formGroup]="form" >
+            <p-table
+            #dt2
+            [value]="data"
+            dataKey="id"
+            [rows]="5"
+            [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[5,10, 25, 50]"
+            [loading]="loading"
+            [paginator]="false"
+            currentPageReportTemplate="Affichage de {first} à {last} parmi {totalRecords} résultats"
+            [tableStyle]="{ 'min-width': '75rem' }"
+            [responsive]="true"
+
+            (onPage)="onPageChange($event)"
+            >
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:50%">Nom</th>
+                    <th style="width:50%">Date</th>
+                </tr>
+                <tr>
+                    <th>
+                        <input placeholder="Recherche par Nom" type="text" pInputText formControlName="name"/>
+                    </th>
+                    <th>
+                        <p-inputMask formControlName="date" mask="99/99/9999" placeholder="JJ/MM/AAAA" slotChar="JJ/MM/AAAA"></p-inputMask>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-e>
+                <tr (click)="viewAssessment(e)" class="medical-assessment-response-line">
+                    <td>
+                        {{ e.name }}
+                    </td>
+                    <td>
+                        {{ e.createdDate | date:'dd/MM/yyyy'}}
+                    </td>
+                    <td>
+                    </td>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5">Aucun résultat trouvé.</td>
+                </tr>
+            </ng-template>
+
+        </p-table>
+        <p-paginator (onPageChange)="onPageChange($event)" [first]="currentPage" [rows]="pageSize" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5, 10, 20, 30]"></p-paginator>
+
+        </form>
+    </div>
+
+</div>
+
+<p-dialog header="Report" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }">
+    <span class="block mb-5">{{report}}</span>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Close" severity="secondary" (onClick)="visible = false" />
+    </div>
+</p-dialog>

@@ -40,7 +40,7 @@
                     </div>
                 <td *ngIf="reports[i].status==buttonStatusEnum.LOADED">
                     <div class="flex justify-content-center">
-                        <p-button icon="pi pi-file" (click)="showDialog(i)" [rounded]="true" [text]="true" [raised]="true" />
+                        <p-button icon="pi pi-file" (click)="showReport(i)" [rounded]="true" [text]="true" [raised]="true" />
                     </div>
                 </td>
                 <td *ngIf="reports[i].status==buttonStatusEnum.NOT_CLICKED">
@@ -51,9 +51,29 @@
     </p-table>
 </div>
 
-<p-dialog header="Report" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }">
+<p-dialog header="Report" [modal]="true" [(visible)]="reportVisible" [style]="{ width: '50rem' }">
     <span class="block mb-5">{{report}}</span>
     <div class="flex justify-content-end gap-2">
-        <p-button label="Close" severity="secondary" (onClick)="visible = false" />
+        <p-button label="Close" severity="secondary" (onClick)="reportVisible = false" />
     </div>
 </p-dialog>
+
+
+<div *ngIf="assessmentBatch && reports" class="flex justify-content-end">
+    <div class="save-medical-assessment flex justify-content-end submit-button">
+        <p-button (onClick)="showDialog()" label="Save" />
+    </div>
+    <p-dialog header="Save Medical Assessment Report" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+        <span class="p-text-secondary block mb-5">Give a name to this medical assessment :</span>
+        <div class="flex align-items-center gap-3 mb-3">
+            <input pInputText [(ngModel)]="name" id="name" class="flex-auto" autocomplete="off" />
+        </div>
+        <p class="create-medical-assessment-warn-msg">{{saveErrorMsg}}</p>
+        <div class="flex justify-content-end gap-2">
+            <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
+            <p-button label="Save" (onClick)="onSave()" />
+        </div>
+    </p-dialog>
+</div>
+
+

@@ -7,10 +7,11 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ButtonModule } from 'primeng/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { QualityControlRoutingModule } from './quality-control-routing.module';
 import { CreateQualityControlComponent } from './components/create-quality-control/create-quality-control.component';
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -27,7 +28,9 @@ import { CreateQualityControlComponent } from './components/create-quality-contr
     FieldsetModule,
     ProgressSpinnerModule,
     ButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogModule,
+    FormsModule
   ]
 })
 export class QualityControlModule { }

@@ -42,7 +42,10 @@ export class MedicalAssessmentService {
     return this.http.post(MEDICAL_ASSESSMENT_REPORT_API_URL, formData, { responseType: 'text' });
   }
 
+
   searchMedicalAssessments(page:number,pageSize:number,searchQuestionnaireRequest:any):Observable<PageResponse<any>>{
     return this.httpUtil.post(`${MEDICAL_ASSESSMENT_API_URL}/search`,searchQuestionnaireRequest,{page:page,pageSize:pageSize});
   }
+
+
 }

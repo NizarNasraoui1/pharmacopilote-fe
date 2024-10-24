@@ -15,6 +15,10 @@ export class CreateQualityControlComponent implements OnInit {
     displayReport = false;
     showReportClicked = false;
     report;
+    visible: boolean = false;
+    name: string;
+    saved = false;
+    saveErrorMsg = "";
 
     constructor(private formBuilder: FormBuilder,private qualityControlService:QualityControlServiceService,private messageService:MessageService) {
     }
@@ -36,9 +40,6 @@ export class CreateQualityControlComponent implements OnInit {
         if(this.medicalAssessmentForm.value.report==''){
             return 'Please fill in the medical review to evaluate';
         }
-        if(!this.medicalAssessmentForm.value.caseExportFile){
-            return 'Please upload a case export file';
-        }
         return null;
     }
 
@@ -53,4 +54,20 @@ export class CreateQualityControlComponent implements OnInit {
             this.displayReport = true;
         });
     }
+
+    onSave(){
+        if(!this.name || this.name===''){
+            this.saveErrorMsg = "Please fill in the name";
+            return;
+        }
+        this.showDialog();
+        this.qualityControlService.saveMedicalAssessmentReport(this.name,this.report).subscribe((res)=>{
+            this.visible = false;
+            this.messageService.add({severity:'success', summary: 'Success', detail: 'Medical Assessment saved'});
+        })
+      }
+
+      showDialog() {
+        this.visible = true;
+      }
 }

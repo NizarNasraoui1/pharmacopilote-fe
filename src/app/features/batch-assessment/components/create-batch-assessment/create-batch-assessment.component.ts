@@ -10,7 +10,7 @@ import { MessageService } from 'primeng/api';
 })
 export class CreateBatchAssessmentComponent implements OnInit {
     buttonStatusEnum = ButtonStatusEnum;
-    visible: boolean = false;
+    reportVisible: boolean = false;
     report = "";
     assessmentBatch;
     batchUploaded = false;
@@ -18,6 +18,10 @@ export class CreateBatchAssessmentComponent implements OnInit {
     reports = [];
     files;
     batchId;
+    visible: boolean = false;
+    name: string;
+    saved = false;
+    saveErrorMsg = "";
 
     constructor(private batchAssessmentService:BatchAssessmentService,private messageService:MessageService){}
 
@@ -59,9 +63,9 @@ export class CreateBatchAssessmentComponent implements OnInit {
         });
     }
 
-    showDialog(i) {
+    showReport(i) {
         this.report = this.reports[i].content;
-        this.visible = true;
+        this.reportVisible = true;
     }
 
     generateReportList(){
@@ -82,6 +86,22 @@ export class CreateBatchAssessmentComponent implements OnInit {
           }
           return e;
         });
+      }
+
+      onSave(){
+        if(!this.name || this.name===''){
+            this.saveErrorMsg = "Please fill in the name";
+            return;
+        }
+        this.showDialog();
+        this.batchAssessmentService.saveBatchAssessment(this.batchId).subscribe((res)=>{
+            this.visible = false;
+            this.messageService.add({severity:'success', summary: 'Success', detail: 'Medical Batch Assessment saved'});
+        })
+      }
+
+      showDialog() {
+        this.visible = true;
       }
 
 
