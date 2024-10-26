@@ -49,7 +49,7 @@ export class AppMenuComponent implements OnInit {
                     {
                         label: 'Search',
                         icon: 'pi pi-fw pi-search',
-                        routerLink: ['./data-entry/search'],
+                        routerLink: ['./data-entry-helper/search'],
                     }
                 ],
             },
