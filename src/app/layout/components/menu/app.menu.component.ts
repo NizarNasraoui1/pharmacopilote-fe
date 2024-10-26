@@ -31,11 +31,11 @@ export class AppMenuComponent implements OnInit {
                         icon: 'pi pi-fw pi-file',
                         routerLink: ['./data-entry/create'],
                     },
-                    {
-                        label: 'Search',
-                        icon: 'pi pi-fw pi-search',
-                        routerLink: ['./data-entry/search'],
-                    }
+                    // {
+                    //     label: 'Search',
+                    //     icon: 'pi pi-fw pi-search',
+                    //     routerLink: ['./data-entry/search'],
+                    // }
                 ],
             },
             {
@@ -50,6 +50,21 @@ export class AppMenuComponent implements OnInit {
                         label: 'Search',
                         icon: 'pi pi-fw pi-search',
                         routerLink: ['./data-entry-helper/search'],
+                    }
+                ],
+            },
+            {
+                label: 'Data Quality Control',
+                items: [
+                    {
+                        label: 'Create Data Quality Control',
+                        icon: 'pi pi-fw pi-file',
+                        routerLink: ['./data-entry-quality/create'],
+                    },
+                    {
+                        label: 'Search',
+                        icon: 'pi pi-fw pi-search',
+                        routerLink: ['./data-entry-quality/search'],
                     }
                 ],
             },

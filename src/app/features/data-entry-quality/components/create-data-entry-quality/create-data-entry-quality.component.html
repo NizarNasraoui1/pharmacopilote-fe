@@ -1,7 +1,7 @@
-<form [formGroup]="medicalAssessmentForm">
+<form [formGroup]="dataEntryQualityForm">
     <div class="quality-control">
         <div class="card title">
-            <h4>New Quality Control</h4>
+            <h4>Create Quality Data Entry Review</h4>
         </div>
 
         <div class="card">
@@ -15,17 +15,6 @@
                 <pharmacopilote-file-upload formControlName="caseExportFile"></pharmacopilote-file-upload>
             </div>
 
-        <div class="card">
-            <p>RCP URL:</p>
-            <input type="text" formControlName="rcpUrl" pInputText />
-        </div>
-
-        <div class="card">
-            <p>MEDICAL REVIEW TO EVALUATE::</p>
-            <textarea rows="10" cols="90" formControlName="report" pInputTextarea>
-            </textarea>
-        </div>
-
         <div *ngIf="!showReportClicked" class="flex justify-content-end submit-button">
             <p-button (click)="submit()" label="Submit" />
         </div>
@@ -38,9 +27,7 @@
                 </div>
                 <ng-template #showReport>
                     <div>
-                        <p class="m-0">
-                            {{ report }}
-                        </p>
+                            <div [innerHTML]="report | safeHtml"></div>
                     </div>
                 </ng-template>
             </p-fieldset>
@@ -53,8 +40,8 @@
     <div class="save-quality-control flex justify-content-end submit-button" *ngIf="report">
         <p-button (onClick)="showDialog()" label="Save" />
     </div>
-    <p-dialog header="Save Medical Assessment Report" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
-        <span class="p-text-secondary block mb-5">Give a name to this medical assessment :</span>
+    <p-dialog header="Save Data Entry Review" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+        <span class="p-text-secondary block mb-5">Give a name to this data entry review :</span>
         <div class="flex align-items-center gap-3 mb-3">
             <input pInputText [(ngModel)]="name" id="name" class="flex-auto" autocomplete="off" />
         </div>
