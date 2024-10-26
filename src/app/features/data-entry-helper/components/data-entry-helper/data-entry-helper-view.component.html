@@ -183,7 +183,7 @@
 </ng-container>
 
 
-<div class="flex justify-content-end">
+<div *ngIf="!saved" class="flex justify-content-end">
     <div class="save-medical-assessment flex justify-content-end submit-button">
         <p-button (onClick)="showDialog()" label="Save" />
     </div>

@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
-import { MedicalAssessmentService } from 'src/app/features/medical-assessment/services/medical-assessment.service';
 import { DataEntryHelperService } from '../../services/data-entry-helper.service';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -27,6 +26,9 @@ export class DataEntryHelperViewComponent implements OnInit{
 
     ngOnInit(): void {
         this.data = history.state.data;
+        if(history.state.saved){
+            this.saved = true;
+        }
       }
 
       onSave(){
@@ -34,6 +36,7 @@ export class DataEntryHelperViewComponent implements OnInit{
             this.saveErrorMsg = "Please fill in the name";
             return;
         }
+        this.data.name = this.name;
         this.showDialog();
         this.dataEntryHelperService.saveDataEntryHelperData(this.data).subscribe((res)=>{
             this.visible = false;

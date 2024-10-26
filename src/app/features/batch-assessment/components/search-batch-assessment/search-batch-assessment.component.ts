@@ -30,10 +30,6 @@ export class SearchBatchAssessmentComponent {
 
     totalRecords = 0;
 
-    visible = false;
-
-    report = "";
-
     subs = new SubSink();
 
     constructor(private formBuilder: FormBuilder,private batchassessmentService:BatchAssessmentService ,private router:Router) {}
@@ -41,7 +37,7 @@ export class SearchBatchAssessmentComponent {
     ngOnInit() {
         this.initForm();
         this.subscribeToFormValueChanges();
-        this.searchMedicalAssessments();
+        this.searchBatchAssessments();
     }
 
     initForm(){
@@ -66,18 +62,18 @@ export class SearchBatchAssessmentComponent {
         this.form.valueChanges.pipe(debounceTime(1000)).subscribe(()=>{
             if(this.isFormDatesValid()){
                 this.currentPage = 0;
-                this.searchMedicalAssessments();
+                this.searchBatchAssessments();
             }
         })
     }
 
-    searchMedicalAssessments(){
+    searchBatchAssessments(){
         const formValue= this.form.value;
-        const searchMedicalAssessmentsRequest: any = {
+        const searchBatchAssessmentsRequest: any = {
             name: formValue.name,
             date: formValue.birthdate=='JJ/MM/AAAA'?null:formValue.date
         }
-        this.subs.sink = this.batchassessmentService.searchMedicalAssessmentBatch(this.currentPage,this.pageSize,searchMedicalAssessmentsRequest).subscribe((res)=>{
+        this.subs.sink = this.batchassessmentService.searchMedicalAssessmentBatch(this.currentPage,this.pageSize,searchBatchAssessmentsRequest).subscribe((res)=>{
             this.data = res.content;
             this.totalRecords = res.totalElements;
         });
@@ -86,12 +82,11 @@ export class SearchBatchAssessmentComponent {
     onPageChange(event: any) {
         this.currentPage = event.page;
         this.pageSize = event.rows;
-        this.searchMedicalAssessments();
+        this.searchBatchAssessments();
     }
 
-    viewAssessment(medicalAssessment) {
-        this.report = medicalAssessment.report;
-        this.visible = true;
+    viewAssessment(batchAssessmentId) {
+        this.router.navigate(['./batch-assessment/view/'+batchAssessmentId]);
     }
 
     ngOnDestroy() {

@@ -94,7 +94,7 @@ export class CreateBatchAssessmentComponent implements OnInit {
             return;
         }
         this.showDialog();
-        this.batchAssessmentService.saveBatchAssessment(this.batchId).subscribe((res)=>{
+        this.batchAssessmentService.saveBatchAssessment(this.batchId,this.name).subscribe((res)=>{
             this.visible = false;
             this.messageService.add({severity:'success', summary: 'Success', detail: 'Medical Batch Assessment saved'});
         })

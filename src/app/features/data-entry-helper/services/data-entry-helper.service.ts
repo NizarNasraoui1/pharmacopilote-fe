@@ -13,7 +13,7 @@ export class DataEntryHelperService {
   constructor(private httpUtil: HttpUtilService) { }
 
   getDataEntryFile(entryContent): Observable<any> {
-    return this.httpUtil.post(`${DATA_ENTRY_HELPER_API_URL}/helper`,entryContent);
+    return this.httpUtil.post(`${DATA_ENTRY_HELPER_API_URL}/report`,entryContent);
   }
 
   saveDataEntryHelperData(data):Observable<any>{
@@ -23,4 +23,10 @@ export class DataEntryHelperService {
   search(page:number,pageSize:number,searchQuestionnaireRequest:any):Observable<PageResponse<any>>{
     return this.httpUtil.post(`${DATA_ENTRY_HELPER_API_URL}/search`,searchQuestionnaireRequest,{page:page,pageSize:pageSize});
   }
+
+  getDataEntryHelperById(id):Observable<any>{
+    return this.httpUtil.get(`${DATA_ENTRY_HELPER_API_URL}/${id}`);
+  }
+
+
 }

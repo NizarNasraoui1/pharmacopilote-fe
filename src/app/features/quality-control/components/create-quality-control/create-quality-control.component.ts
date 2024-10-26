@@ -28,7 +28,6 @@ export class CreateQualityControlComponent implements OnInit {
 
     initForm(){
         this.medicalAssessmentForm = this.formBuilder.group({
-            businessId: ['', Validators.required],
             verbatim: ['', Validators.required],
             rcpUrl: ['', Validators.required],
             report : ['', Validators.required],

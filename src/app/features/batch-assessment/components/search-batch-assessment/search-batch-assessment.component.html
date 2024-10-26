@@ -35,12 +35,12 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-e>
-                <tr (click)="viewAssessment(e)" class="medical-assessment-response-line">
+                <tr (click)="viewAssessment(e.id)" class="medical-assessment-response-line">
                     <td>
                         {{ e.name }}
                     </td>
                     <td>
-                        {{ e.createdDate | date:'dd/MM/yyyy'}}
+                        {{ e.date }}
                     </td>
                     <td>
                     </td>
@@ -60,10 +60,3 @@
     </div>
 
 </div>
-
-<p-dialog header="Report" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }">
-    <span class="block mb-5">{{report}}</span>
-    <div class="flex justify-content-end gap-2">
-        <p-button label="Close" severity="secondary" (onClick)="visible = false" />
-    </div>
-</p-dialog>

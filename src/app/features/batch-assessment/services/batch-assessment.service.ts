@@ -26,11 +26,19 @@ export class BatchAssessmentService {
         return this.http.get(`${BATCH_ASSESSMENT_API_URL}/report/${batchId}/${caseId}`, { responseType: 'text' });
     }
 
-    saveBatchAssessment(batchId): Observable<any> {
-        return this.http.get(`${BATCH_ASSESSMENT_API_URL}/save/${batchId}`);
+    saveBatchAssessment(batchId,name): Observable<any> {
+        let saveRequest = {
+            name: name,
+            id: batchId
+        }
+        return this.http.post(`${BATCH_ASSESSMENT_API_URL}`,saveRequest);
     }
 
     searchMedicalAssessmentBatch(page:number,pageSize:number,searchQuestionnaireRequest:any):Observable<PageResponse<any>>{
         return this.httpUtil.post(`${BATCH_ASSESSMENT_API_URL}/search`,searchQuestionnaireRequest,{page:page,pageSize:pageSize});
+      }
+
+      getAssessmentBatchById(id): Observable<any> {
+        return this.http.get(`${BATCH_ASSESSMENT_API_URL}/${id}`);
       }
 }

@@ -38,10 +38,6 @@ export class DataEntryHelperSearchComponent implements OnInit {
 
     totalRecords = 0;
 
-    visible = false;
-
-    report = "";
-
     subs = new SubSink();
 
     constructor(private formBuilder: FormBuilder,private dataEntryHelperService:DataEntryHelperService ,private router:Router) {}
@@ -97,9 +93,10 @@ export class DataEntryHelperSearchComponent implements OnInit {
         this.searchMedicalAssessments();
     }
 
-    viewAssessment(medicalAssessment) {
-        this.report = medicalAssessment.report;
-        this.visible = true;
+    viewDataEntryHelper(id) {
+        this.dataEntryHelperService.getDataEntryHelperById(id).subscribe((res) => {
+            this.router.navigate(['/data-entry-helper/view'], { state: { data: res,saved:true } });
+        })
     }
 
     ngOnDestroy() {
