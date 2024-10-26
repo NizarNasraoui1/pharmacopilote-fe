@@ -16,6 +16,7 @@ import { DialogModule } from 'primeng/dialog';
 import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
 import { InputMaskModule } from 'primeng/inputmask';
+import { SafeHtmlPipe } from 'src/app/shared/pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { InputMaskModule } from 'primeng/inputmask';
     FormsModule,
     PaginatorModule,
     TableModule,
-    InputMaskModule
+    InputMaskModule,
+    SafeHtmlPipe
 
 
   ]

@@ -38,9 +38,9 @@
                 </div>
                 <ng-template #showReport>
                     <div>
-                        <p class="m-0">
-                            {{ report }}
-                        </p>
+                        <div>
+                            <div [innerHTML]="report | safeHtml"></div>
+                    </div>
                     </div>
                 </ng-template>
             </p-fieldset>

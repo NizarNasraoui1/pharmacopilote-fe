@@ -48,9 +48,9 @@
                             style="vertical-align: center; font-size: 19px;"
                           ></i>
                         </div>
-                        <p class="m-0 report-paragraph">
-                            {{ report }}
-                        </p>
+                        <div>
+                            <div class="report-content" [innerHTML]="report | safeHtml"></div>
+                    </div>
                     </div>
                 </ng-template>
             </p-fieldset>

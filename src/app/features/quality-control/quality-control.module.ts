@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QualityControlRoutingModule } from './quality-control-routing.module';
 import { CreateQualityControlComponent } from './components/create-quality-control/create-quality-control.component';
 import { DialogModule } from 'primeng/dialog';
+import { SafeHtmlPipe } from 'src/app/shared/pipes/safe-html.pipe';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { DialogModule } from 'primeng/dialog';
     ButtonModule,
     ReactiveFormsModule,
     DialogModule,
-    FormsModule
+    FormsModule,
+    SafeHtmlPipe
   ]
 })
 export class QualityControlModule { }
