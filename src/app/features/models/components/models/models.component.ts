@@ -3,7 +3,7 @@ import { ModelService } from '../../services/model.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'pharmacopilote-models',
+  selector: 'vigihelp-models',
   templateUrl: './models.component.html',
   styleUrls: ['./models.component.scss']
 })

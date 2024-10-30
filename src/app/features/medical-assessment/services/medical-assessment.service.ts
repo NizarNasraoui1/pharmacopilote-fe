@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { PageResponse } from 'src/app/shared/models/page-response';
 import { HttpUtilService } from 'src/app/util/service/http-util.service';
 
-const MEDICAL_ASSESSMENT_REPORT_API_URL = '/api/pharmacopilote/medical-assessments-report';
-const MEDICAL_ASSESSMENT_API_URL = '/api/pharmacopilote/medical-assessments';
+const MEDICAL_ASSESSMENT_REPORT_API_URL = '/api/vigihelp/medical-assessments-report';
+const MEDICAL_ASSESSMENT_API_URL = '/api/vigihelp/medical-assessments';
 
 @Injectable({
   providedIn: 'root'

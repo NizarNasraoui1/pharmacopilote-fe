@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'pharmacopilote-view-data-entry-helper',
+  selector: 'vigihelp-view-data-entry-helper',
   standalone: true,
   imports: [CommonModule, TableModule,DialogModule,ButtonModule,FormsModule],
   templateUrl: './data-entry-helper-view.component.html',

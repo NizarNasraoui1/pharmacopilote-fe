@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { PageResponse } from 'src/app/shared/models/page-response';
 import { HttpUtilService } from 'src/app/util/service/http-util.service';
 
-const BATCH_ASSESSMENT_API_URL = '/api/pharmacopilote/batch-assessment';
+const BATCH_ASSESSMENT_API_URL = '/api/vigihelp/batch-assessment';
 
 @Injectable({
     providedIn: 'root'

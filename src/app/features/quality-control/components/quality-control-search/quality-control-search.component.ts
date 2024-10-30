@@ -12,7 +12,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { QualityControlServiceService } from '../../services/quality-control-service.service';
 
 @Component({
-  selector: 'pharmacopilote-quality-control-search',
+  selector: 'vigihelp-quality-control-search',
   standalone: true,
   imports: [CommonModule,TableModule,PaginatorModule,ReactiveFormsModule,DialogModule,ButtonModule,InputMaskModule],
   templateUrl: './quality-control-search.component.html',

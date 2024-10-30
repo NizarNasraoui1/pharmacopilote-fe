@@ -5,7 +5,7 @@ import { ModelService } from 'src/app/features/models/services/model.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'pharmacopilote-create-medical-assessment',
+  selector: 'vigihelp-create-medical-assessment',
   templateUrl: './create-medical-assessment.component.html',
   styleUrls: ['./create-medical-assessment.component.scss'],
   encapsulation: ViewEncapsulation.None

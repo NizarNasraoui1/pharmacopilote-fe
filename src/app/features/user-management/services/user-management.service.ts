@@ -4,7 +4,7 @@ import { Group } from 'src/app/shared/models/group';
 import { User } from 'src/app/shared/models/user';
 import { HttpUtilService } from 'src/app/util/service/http-util.service';
 
-const USER_MANAGEMENT_BASE_URL = "/api/pharmacopilote/account-management";
+const USER_MANAGEMENT_BASE_URL = "/api/vigihelp/account-management";
 const GET_USERS_URL = `${USER_MANAGEMENT_BASE_URL}/users`;
 const GET_GROUPS_URL = `${USER_MANAGEMENT_BASE_URL}/groups`;
 const GET_ROLES_URL = `${USER_MANAGEMENT_BASE_URL}/role-management`;
@@ -12,7 +12,7 @@ const PUT_ROLES_URL = `${USER_MANAGEMENT_BASE_URL}/group-roles`;
 const ADD_USER_TO_GROUP_URL = `${USER_MANAGEMENT_BASE_URL}/groups`;
 const PUT_USER = `${USER_MANAGEMENT_BASE_URL}/users`;
 const PUT_GROUP = `${USER_MANAGEMENT_BASE_URL}/groups`;
-const AUTH_URL = 'api/pharmacopilote/public/auth';
+const AUTH_URL = 'api/vigihelp/public/auth';
 
 
 @Injectable({

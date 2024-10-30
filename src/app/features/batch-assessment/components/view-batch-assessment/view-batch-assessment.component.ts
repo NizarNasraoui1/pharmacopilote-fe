@@ -7,7 +7,7 @@ import { BatchAssessmentService } from '../../services/batch-assessment.service'
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'pharmacopilote-view-batch-assessment',
+  selector: 'vigihelp-view-batch-assessment',
   standalone: true,
   imports: [CommonModule,ButtonModule,TableModule,DialogModule],
   templateUrl: './view-batch-assessment.component.html',

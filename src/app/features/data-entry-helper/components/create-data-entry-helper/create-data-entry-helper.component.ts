@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { SpinnerService } from 'src/app/shared/services/spinner-service';
 
 @Component({
-  selector: 'pharmacopilote-create-data-entry-helper',
+  selector: 'vigihelp-create-data-entry-helper',
   standalone: true,
   imports: [DataEntryHelperViewComponent,InputTextareaModule,ButtonModule,FormsModule],
   templateUrl: './create-data-entry-helper.component.html',

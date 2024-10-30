@@ -4,7 +4,7 @@ import { BatchAssessmentService } from '../../services/batch-assessment.service'
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'pharmacopilote-create-batch-assessment',
+  selector: 'vigihelp-create-batch-assessment',
   templateUrl: './create-batch-assessment.component.html',
   styleUrl: './create-batch-assessment.component.scss'
 })

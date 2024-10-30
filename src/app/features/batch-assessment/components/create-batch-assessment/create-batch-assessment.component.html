@@ -8,7 +8,7 @@
             <textarea rows="10" cols="90" [(ngModel)]="productForm" pInputTextarea>
             </textarea>
         </div>
-        <pharmacopilote-file-upload (onFileUploaded)="onFileUploaded($event)"></pharmacopilote-file-upload>
+        <vigihelp-file-upload (onFileUploaded)="onFileUploaded($event)"></vigihelp-file-upload>
         <div class="flex justify-content-end submit-button submit-files">
             <p-button (click)="submitFilesAndProductForm()" label="Submit" />
         </div>

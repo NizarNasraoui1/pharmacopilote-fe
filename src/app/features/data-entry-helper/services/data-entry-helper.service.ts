@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { PageResponse } from 'src/app/shared/models/page-response';
 import { HttpUtilService } from 'src/app/util/service/http-util.service';
 
-const DATA_ENTRY_HELPER_API_URL = '/api/pharmacopilote/data-entry-helper';
+const DATA_ENTRY_HELPER_API_URL = '/api/vigihelp/data-entry-helper';
 
 @Injectable({
   providedIn: 'root'

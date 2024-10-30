@@ -4,7 +4,7 @@ import { QualityControlServiceService } from '../../services/quality-control-ser
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'pharmacopilote-create-quality-control',
+  selector: 'vigihelp-create-quality-control',
   templateUrl: './create-quality-control.component.html',
   styleUrl: './create-quality-control.component.scss',
   encapsulation: ViewEncapsulation.None

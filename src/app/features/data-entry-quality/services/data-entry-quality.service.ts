@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { PageResponse } from 'src/app/shared/models/page-response';
 import { HttpUtilService } from 'src/app/util/service/http-util.service';
 
-const QUALITY_CONTROL_REPORT_API_URL = '/api/pharmacopilote/data-entry-quality-report';
-const QUALITY_CONTROL_API_URL = '/api/pharmacopilote/data-entry-quality';
+const QUALITY_CONTROL_REPORT_API_URL = '/api/vigihelp/data-entry-quality-report';
+const QUALITY_CONTROL_API_URL = '/api/vigihelp/data-entry-quality';
 
 @Injectable({
   providedIn: 'root'

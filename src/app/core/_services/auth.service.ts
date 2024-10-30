@@ -15,7 +15,7 @@ export interface loginResponse{
     username:string
 }
 
-const AuthUrl = 'api/pharmacopilote/public/auth';
+const AuthUrl = 'api/vigihelp/public/auth';
 
 @Injectable({
     providedIn: 'root',

@@ -12,7 +12,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { DataEntryHelperService } from '../../services/data-entry-helper.service';
 
 @Component({
-    selector: 'pharmacopilote-data-entry-helper-search',
+    selector: 'vigihelp-data-entry-helper-search',
   standalone: true,
   imports: [CommonModule,TableModule,PaginatorModule,ReactiveFormsModule,DialogModule,ButtonModule,InputMaskModule],
   templateUrl: './data-entry-helper-search.component.html',

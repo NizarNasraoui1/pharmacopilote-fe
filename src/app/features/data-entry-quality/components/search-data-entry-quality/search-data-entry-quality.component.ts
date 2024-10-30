@@ -12,7 +12,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { DataEntryQualityService } from '../../services/data-entry-quality.service';
 
 @Component({
-  selector: 'pharmacopilote-search-data-entry-quality',
+  selector: 'vigihelp-search-data-entry-quality',
   standalone: true,
   imports: [CommonModule,TableModule,PaginatorModule,ReactiveFormsModule,DialogModule,ButtonModule,InputMaskModule],
   templateUrl: './search-data-entry-quality.component.html',

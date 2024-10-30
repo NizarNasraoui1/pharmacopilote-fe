@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { PageResponse } from 'src/app/shared/models/page-response';
 
-const DATA_ENTRY_API_URL = '/api/pharmacopilote/data-entry/';
+const DATA_ENTRY_API_URL = '/api/vigihelp/data-entry/';
 @Injectable({
   providedIn: 'root'
 })

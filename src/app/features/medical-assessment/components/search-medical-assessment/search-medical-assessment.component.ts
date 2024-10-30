@@ -6,7 +6,7 @@ import { SubSink } from 'subsink';
 import { MedicalAssessmentService } from '../../services/medical-assessment.service';
 
 @Component({
-  selector: 'pharmacopilote-search-medical-assessment',
+  selector: 'vigihelp-search-medical-assessment',
   templateUrl: './search-medical-assessment.component.html',
   styleUrls: ['./search-medical-assessment.component.scss'],
   encapsulation: ViewEncapsulation.None

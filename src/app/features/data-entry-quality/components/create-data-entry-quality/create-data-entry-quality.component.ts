@@ -13,7 +13,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SafeHtmlPipe } from 'src/app/shared/pipes/safe-html.pipe';
 
 @Component({
-  selector: 'pharmacopilote-create-data-entry-quality',
+  selector: 'vigihelp-create-data-entry-quality',
   standalone: true,
   imports: [CommonModule,ButtonModule,DialogModule,FieldsetModule,FileUploadComponent,ReactiveFormsModule,FormsModule,ProgressSpinnerModule,InputTextareaModule,InputTextModule,SafeHtmlPipe],
   templateUrl: './create-data-entry-quality.component.html',

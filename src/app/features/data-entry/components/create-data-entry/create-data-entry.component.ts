@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataEntryService } from '../../services/data-entry.service';
 
 @Component({
-  selector: 'pharmacopilote-create-data-entry',
+  selector: 'vigihelp-create-data-entry',
   templateUrl: './create-data-entry.component.html',
   styleUrl: './create-data-entry.component.scss',
   encapsulation: ViewEncapsulation.None

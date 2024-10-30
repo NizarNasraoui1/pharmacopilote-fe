@@ -12,7 +12,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputMaskModule } from 'primeng/inputmask';
 
 @Component({
-  selector: 'pharmacopilote-search-data-entry',
+  selector: 'vigihelp-search-data-entry',
   standalone: true,
   imports: [CommonModule,TableModule,PaginatorModule,ReactiveFormsModule,DialogModule,ButtonModule,InputMaskModule],
   templateUrl: './search-data-entry.component.html',

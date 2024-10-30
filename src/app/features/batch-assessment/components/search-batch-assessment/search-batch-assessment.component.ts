@@ -6,7 +6,7 @@ import { SubSink } from 'subsink';
 import { BatchAssessmentService } from '../../services/batch-assessment.service';
 
 @Component({
-  selector: 'pharmacopilote-search-batch-assessment',
+  selector: 'vigihelp-search-batch-assessment',
   templateUrl: './search-batch-assessment.component.html',
   styleUrl: './search-batch-assessment.component.scss',
   encapsulation: ViewEncapsulation.None
