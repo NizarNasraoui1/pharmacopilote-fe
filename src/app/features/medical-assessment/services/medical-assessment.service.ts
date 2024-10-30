@@ -18,10 +18,10 @@ export class MedicalAssessmentService {
     return this.uploadData(medicalAssessment.caseExportFile, medicalAssessment);
   }
 
-  saveMedicalAssessmentReport(name,report): Observable<any> {
+  saveMedicalAssessmentReport(name,data): Observable<any> {
     let medicalAssessment = {
         name: name,
-        report : report
+        report : data.report
     };
     return this.httpUtil.post(MEDICAL_ASSESSMENT_API_URL, medicalAssessment);
   }
@@ -30,7 +30,6 @@ export class MedicalAssessmentService {
     delete jsonData.caseExportFile;
     const formData: FormData = new FormData();
 
-    // Append the file
     if(file){
         formData.append('case-export-file', file);
     }
@@ -39,7 +38,7 @@ export class MedicalAssessmentService {
     }
     formData.append('medical-assessment-data', JSON.stringify(jsonData));
 
-    return this.http.post(MEDICAL_ASSESSMENT_REPORT_API_URL, formData, { responseType: 'text' });
+    return this.http.post(MEDICAL_ASSESSMENT_REPORT_API_URL, formData);
   }
 
 

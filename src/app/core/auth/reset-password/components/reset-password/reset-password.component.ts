@@ -3,6 +3,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/_services/auth.service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import zxcvbn from 'zxcvbn';
 
 @Component({
     selector: 'app-reset-password',
@@ -44,16 +45,17 @@ export class ResetPasswordComponent {
     }
 
     verifyPasswordComplexity(password: string) {
-        if(password.length<4){
-            this.errorMessage = 'Veuillez entrer un mot de passe contenant au moins 4 caractères';
+        const result = zxcvbn(password);
+        if (result.score < 2) {
+            this.errorMessage = 'The password must be stronger';
             return false;
         }
-        return true
+        return true;
     }
 
     arePasswordsAreEquals(password: string, confirmation: string): boolean {
         if (password != confirmation) {
-            this.errorMessage = 'Les mots de passes ne sont pas identiques';
+            this.errorMessage = "The passwords do not match";
             return false;
         }
         return true;
@@ -76,6 +78,16 @@ export class ResetPasswordComponent {
                     this.router.navigate([
                         'auth/reset-password/password-changed',
                     ]);
+                },
+                (error) => {
+                    const errorMessage = error.error.message;
+                    if(errorMessage === 'token already used'){
+                        this.errorMessage = 'The link has already been used';
+                    }
+                    if(errorMessage==='token expired'){
+                        this.errorMessage = 'The link has expired';
+                    }
+                    this.isResetPasswordFailed = true;
                 });
         } else {
             this.isResetPasswordFailed = true;

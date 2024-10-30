@@ -31,7 +31,7 @@
         </div>
 
         <div *ngIf="!showReportClicked" class="flex justify-content-end submit-button">
-            <p-button (click)="submit()" label="Submit" />
+            <p-button (click)="submit()" label="Analyse" />
         </div>
 
         <div *ngIf="showReportClicked" class="card">
@@ -42,14 +42,59 @@
                 </div>
                 <ng-template #showReport>
                     <div>
-                        <div (click)="copyToClipboard(report)" class="copy-report flex justify-content-end">
+                        <div (click)="copyToClipboard(data.report)" class="copy-report flex justify-content-end">
                             <i
                             class="pi pi-fw pi-copy text-blue-500 mr-2"
                             style="vertical-align: center; font-size: 19px;"
                           ></i>
                         </div>
                         <div>
-                            <div class="report-content" [innerHTML]="report | safeHtml"></div>
+                            <div class="report-content" [innerHTML]="data.report | safeHtml"></div>
+                    </div>
+                    </div>
+                </ng-template>
+            </p-fieldset>
+        </div>
+
+        <div *ngIf="showReportClicked" class="card">
+            <p>Explanation :</p>
+            <p-fieldset>
+                <div *ngIf="!displayReport; else showReport" class="spinner">
+                    <p-progressSpinner ariaLabel="loading" />
+                </div>
+                <ng-template #showReport>
+                    <div>
+                        <div (click)="copyToClipboard(data.explanation )" class="copy-report flex justify-content-end">
+                            <i
+                            class="pi pi-fw pi-copy text-blue-500 mr-2"
+                            style="vertical-align: center; font-size: 19px;"
+                          ></i>
+                        </div>
+                        <div>
+                            <div class="report-content" [innerHTML]="data.explanation | safeHtml"></div>
+                    </div>
+                    </div>
+                </ng-template>
+            </p-fieldset>
+        </div>
+
+
+        <div *ngIf="showReportClicked" class="card">
+            <p>Areas of Improvement :</p>
+            <p-fieldset>
+                <div *ngIf="!displayReport; else showReport" class="spinner">
+                    <p-progressSpinner ariaLabel="loading" />
+                </div>
+                <ng-template #showReport>
+                    <div>
+                        <div (click)="copyToClipboard(data.areasOfImprovement)" class="copy-report flex justify-content-end">
+                            <i
+                            class="pi pi-fw pi-copy text-blue-500 mr-2"
+                            style="vertical-align: center; font-size: 19px;"
+                          ></i>
+                        </div>
+                        <div>
+                            <div class="report-content" [innerHTML]="data.areasOfImprovement | safeHtml"></div>
                     </div>
                     </div>
                 </ng-template>

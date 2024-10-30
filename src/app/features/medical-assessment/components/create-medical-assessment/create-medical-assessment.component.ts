@@ -15,7 +15,7 @@ export class CreateMedicalAssessmentComponent implements OnInit {
     models = [];
     displayReport = false;
     showReportClicked = false;
-    report ="a";
+    data;
     methods = [{ name: 'FRENSH',value: false},{name:'WHO',value:true}];
     visible: boolean = false;
     name: string;
@@ -47,7 +47,7 @@ export class CreateMedicalAssessmentComponent implements OnInit {
         }
         this.showReportClicked = true;
         this.medicalAssessmentService.getMedicalAssessmentReport(this.medicalAssessmentForm.value).subscribe((res)=>{
-            this.report = res;
+            this.data = res;
             this.displayReport = true;
         });
     }
@@ -87,7 +87,7 @@ export class CreateMedicalAssessmentComponent implements OnInit {
             return;
         }
         this.showDialog();
-        this.medicalAssessmentService.saveMedicalAssessmentReport(this.name,this.report).subscribe((res)=>{
+        this.medicalAssessmentService.saveMedicalAssessmentReport(this.name,this.data).subscribe((res)=>{
             this.visible = false;
             this.messageService.add({severity:'success', summary: 'Success', detail: 'Medical Assessment saved'});
         })

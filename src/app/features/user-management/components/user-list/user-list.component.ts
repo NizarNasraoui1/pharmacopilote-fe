@@ -80,4 +80,15 @@ export class UserListComponent implements OnInit {
     onModalClosed(){
         this.isCreateUserModalVisible = false;
     }
+
+    resetPassword(user){
+        this.userManagementService.forgotPassword(user.email).subscribe({
+            next:(res)=>{
+                this.toasterService.addSuccessMessage("A mail is sent to "+user.email);
+            },
+            error:(err)=>{
+                this.toasterService.addWarnMessage("Error while sending mail");
+            }
+        })
+    }
 }

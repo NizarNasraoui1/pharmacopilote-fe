@@ -12,6 +12,7 @@ const PUT_ROLES_URL = `${USER_MANAGEMENT_BASE_URL}/group-roles`;
 const ADD_USER_TO_GROUP_URL = `${USER_MANAGEMENT_BASE_URL}/groups`;
 const PUT_USER = `${USER_MANAGEMENT_BASE_URL}/users`;
 const PUT_GROUP = `${USER_MANAGEMENT_BASE_URL}/groups`;
+const AUTH_URL = 'api/pharmacopilote/public/auth';
 
 
 @Injectable({
@@ -52,4 +53,17 @@ export class UserManagementService {
   updateGroup(id:number,groupName:string){
     return this.httpUtil.put(`${PUT_GROUP}/${id}`,groupName);
   }
+
+  deleteUser(id:number){
+    return this.httpUtil.delete(`${PUT_USER}/${id}`);
+  }
+
+  deleteGroup(id:number){
+    return this.httpUtil.delete(`${PUT_GROUP}/${id}`);
+  }
+
+  forgotPassword(email:string){
+    return this.httpUtil.post(`${AUTH_URL}/forgot-password`,email);
+  }
+
 }

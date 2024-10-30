@@ -91,7 +91,3 @@ export class AuthInterceptor implements HttpInterceptor {
       this.router.navigate(['/auth/login']);
     }
   }
-
-  export const authInterceptorProviders = [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ];
