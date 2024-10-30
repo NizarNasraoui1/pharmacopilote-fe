@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpUtilService } from 'src/app/util/service/http-util.service';
 
-const MODELS_API_URL = "/api/pharvigihelpmacopilote/models";
+const MODELS_API_URL = "/api/vigihelp/models";
 
 @Injectable({
   providedIn: 'root'
